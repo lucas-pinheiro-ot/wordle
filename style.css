@@ -1,3 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Strait&display=swap');
+
+:root {
+    --wrong: #ffff31a4;
+    --right: #7ef04d7b;
+}
+
 body {
-    background-color: #262529;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+
+    font-family: "Strait", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #e0e0e0;
+    background-color: #151b21;
+}
+
+
+.word {
+    display: flex;
+    flex-direction: row;    
+
+    width: auto;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    aspect-ratio: 1/1;
+    width: 1.5em;
+    margin: .08em;
+    
+    background-color: #ececec18;
+    border-radius: 15%;
+
+    font-size: 2em;
 }
