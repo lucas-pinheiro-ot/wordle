@@ -1,0 +1,31 @@
+.keyLayer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.key {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5em;
+    height: 2em;
+
+    /*
+    border: 1px solid #e0e0e0;
+    */
+    
+    background-color: #3b3843;
+    border-radius: 15%;
+    margin: .2em;
+}
+
+.key.keyLayer2:first-child {
+    width: 2.5em;
+}
+
+.key.keyLayer2:last-child {
+    width: 2.5em;
+}

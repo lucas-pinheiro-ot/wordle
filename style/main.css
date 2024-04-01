@@ -1,12 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Strait&display=swap');
+
+:root {
+    height: 100vh;
+}
+
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;    
+    justify-content: space-between;
 
+    height: 100%;
+    
     font-family: "Strait", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #e0e0e0;
     background-color: #151b21;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+#main {
+    bottom: 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#keyboard {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5em;
 }

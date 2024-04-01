@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Strait&display=swap');
-
 :root {
     --wrong: #ffff31a4;
     --right: #7ef04d7b;
@@ -10,6 +8,7 @@
     flex-direction: row;    
 
     width: auto;
+    margin: 0px 3em;
 }
 
 .letter {
@@ -18,14 +17,33 @@
     align-items: center;
 
     aspect-ratio: 1/1;
-    width: 1.5em;
+    width: 1.6em;
     margin: .08em;
     
-    background-color: #ececec18;
+    
+    background-color: #3b3843;
+    border: 2px solid #3b3843;
     border-radius: 15%;
 
     font-size: 2em;
 }
+
+.usedWord > .letter {
+    background-color: #151219;
+}
+
+.activeWord > .letter {
+    
+    background-color: #ffffff00;
+}
+
+.letter.wrongPlace {
+    background-color: var(--wrong);
+}
+.letter.right {
+    background-color: var(--right);
+}
+
 
 #in {
     all: unset;
