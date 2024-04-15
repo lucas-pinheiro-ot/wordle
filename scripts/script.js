@@ -3,47 +3,54 @@ var keyboardObject = new Keyboard()
 
 // Setup runs on load
 function setup() {
-    window.addEventListener('keydown', typer);
+    window.addEventListener('keydown', keyboardHandler);
 
     let main = document.getElementById('main');
     gameObject.draw(main);
 
     let keyboardContainer = document.getElementById('keyboard');
     keyboardObject.draw(keyboardContainer);
+
+    //for (let k in keyboardObject.keys) {}
 }
 
 
-function typer(evt) {
+function keyboardHandler(evt) {
     let key = evt.key;
 
     // Erasing
-    if (key == 'Backspace' && gameObject.guess.length > 0) {
-        gameObject.getActiveWord().letters[gameObject.guess.length -1].element.innerHTML = '';
-        gameObject.guess = gameObject.guess.slice(0, -1);
+    if (key == 'Backspace' && gameObject.cursor > 0) {
+        gameObject.getActiveWord().erase();
+
+        return;
     }
 
     // Submitting
     if (key == 'Enter') {
-        if (gameObject.guess.length != 5) {
-            document.getElementById('warning').innerHTML = 'Only 5-letter words';
-            giveWarning('Only 5-letter words.');
-            return
+        if (gameObject.guess.length == 5) {
+            gameObject.submit();
+            return;
         }
-        gameObject.submit();
-        
-        // Implement a delay for the duration of reveal animation here
+            
+        document.getElementById('warning').innerHTML = 'Only 5-letter words';
+        giveWarning('Only 5-letter words.', 3000);
+        return;
+    }
+
+    if (key == 'ArrowLeft') {
+        gameObject.cursor -= (gameObject.cursor <= 0) ? 0 : 1;
+    }
+
+    if (key == 'ArrowRight') {
+        gameObject.cursor += (gameObject.cursor >= 4) ? 0 : 1;
     }
 
     // Break if invalid input
-    if (gameObject.guess.length >= 5) { return }
     if (/[a-zA-Z]/.test(key) == false) { return }
     if (key.length > 1) { return }
 
     // Writing
-    var length = gameObject.guess.length;
-    
-    gameObject.guess += key.toUpperCase();
-    gameObject.getActiveWord().letters[length].element.innerHTML = key.toUpperCase();
+    gameObject.getActiveWord().type(key.toUpperCase());
 }
 
 
@@ -51,10 +58,13 @@ function typer(evt) {
 function vanish() {
     document.getElementById('warning').style.opacity = '0';
 }
-function giveWarning(message) {
+
+
+function giveWarning(message, time) {
     let warning = document.getElementById('warning')
     warning.innerHTML = message;
     warning.style.opacity = '1';
 
-    setTimeout(vanish, 3000);
+    if (time == 'perma') { return }
+    setTimeout(vanish, time);
 }

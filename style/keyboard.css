@@ -5,6 +5,8 @@
 }
 
 .key {
+    all: unset;
+
     font-size: 25px;
     display: flex;
     justify-content: center;
@@ -17,9 +19,13 @@
     border: 1px solid #e0e0e0;
     */
     
-    background-color: #3b3843;
+    background-color: var(--key-color);
     border-radius: 15%;
     margin: .2em;
+}
+
+.key:hover {
+    transform: scale(1.2);
 }
 
 .key.keyLayer2:first-child {

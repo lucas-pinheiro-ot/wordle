@@ -2,9 +2,23 @@
 
 :root {
     height: 100vh;
+
+    --background: #151b21;
+    --text-color: #e0e0e0;
+
+    --active-word-border: #696969;
+    --square-active: #ad292900;
+    --square-unused: #2b3037;
+    --square-used: #151219;
+
+    --key-color: var(--square-unused);
+
+    --wrong: #ffff31a4;
+    --right: #7ef04d7b;
 }
 
 body {
+    user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -14,8 +28,8 @@ body {
     font-family: "Strait", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #e0e0e0;
-    background-color: #151b21;
+    color: var(--text-color);
+    background-color: var(--background);
 }
 
 header {

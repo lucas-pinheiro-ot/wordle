@@ -1,8 +1,3 @@
-:root {
-    --wrong: #ffff31a4;
-    --right: #7ef04d7b;
-}
-
 .word {
     display: flex;
     flex-direction: row;    
@@ -11,36 +6,45 @@
     margin: 0px 3em;
 }
 
-.letter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.letterSlot {
+    display: grid;
+    place-items: center;
+    grid-template-rows: 20fr 1fr;
+    
 
     aspect-ratio: 1/1;
     width: 1.6em;
     margin: .08em;
     
     
-    background-color: #3b3843;
-    border: 2px solid #3b3843;
+    background-color: var(--square-unused);
+    border: 2px solid var(--square-unused);
     border-radius: 15%;
 
     font-size: 2em;
 }
 
-.usedWord > .letter {
-    background-color: #151219;
+.usedWord > .letterSlot {
+    background-color: var(--square-used);
 }
 
-.activeWord > .letter {
-    
-    background-color: #ffffff00;
+.activeWord > .letterSlot {
+    background-color: var(--square-active);
+    border-color: var(--active-word-border);
 }
 
-.letter.wrongPlace {
+.activeLetter::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+
+    background-color: var(--active-word-border);
+}
+
+.letterSlot.wrongPlace {
     background-color: var(--wrong);
 }
-.letter.right {
+.letterSlot.right {
     background-color: var(--right);
 }
 
